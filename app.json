@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "dino-calm",
+    "name": "Dino Calm",
     "slug": "dino-calm",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#EEF8DD"
     },
     "ios": {
       "supportsTablet": true
@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#EEF8DD"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
