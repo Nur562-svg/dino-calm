@@ -14,9 +14,7 @@ const palette = {
   outline: '#6EA154',
   cheek: '#FFB3A7',
   cloud: '#9EA6BF',
-  spark: '#FFD65A',
-  flower: '#FFA6C9',
-  flame: '#FF8B5E',
+  blush: '#F5A89C',
 };
 
 export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarProps) {
@@ -27,15 +25,17 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
   const mouthWidth = size * 0.14;
   const mouthHeight = size * 0.05;
   const hasScarf = accessories.includes('Scarf');
+  const hasHat = accessories.includes('Hat');
   const hasFlower = accessories.includes('Flower');
   const hasStar = accessories.includes('Star');
   const hasCrown = accessories.includes('Crown');
+  const showSoftCheeks = state !== 'grumpy';
 
   const expression = {
     calm: {
       leftEye: '•',
       rightEye: '•',
-      mouth: '﹀',
+      mouth: '︶',
       extra: null,
     },
     happy: {
@@ -47,9 +47,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text
             style={{
               position: 'absolute',
-              left: size * 0.05,
-              top: size * 0.08,
-              fontSize: size * 0.11,
+              left: size * 0.08,
+              top: size * 0.1,
+              fontSize: size * 0.08,
             }}
           >
             ✦
@@ -57,9 +57,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text
             style={{
               position: 'absolute',
-              right: size * 0.06,
-              top: size * 0.18,
-              fontSize: size * 0.1,
+              right: size * 0.08,
+              top: size * 0.2,
+              fontSize: size * 0.08,
             }}
           >
             ✿
@@ -67,9 +67,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text
             style={{
               position: 'absolute',
-              right: size * 0.14,
-              top: size * 0.06,
-              fontSize: size * 0.08,
+              right: size * 0.17,
+              top: size * 0.1,
+              fontSize: size * 0.06,
             }}
           >
             ✦
@@ -112,9 +112,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text
             style={{
               position: 'absolute',
-              right: size * 0.07,
-              top: size * 0.07,
-              fontSize: size * 0.1,
+              right: size * 0.09,
+              top: size * 0.11,
+              fontSize: size * 0.08,
             }}
           >
             🔥
@@ -125,15 +125,15 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
     healing: {
       leftEye: '˘',
       rightEye: '˘',
-      mouth: '◡',
+      mouth: 'ᴗ',
       extra: (
         <>
           <Text
             style={{
               position: 'absolute',
-              left: size * 0.02,
-              top: size * 0.08,
-              fontSize: size * 0.11,
+              left: size * 0.06,
+              top: size * 0.12,
+              fontSize: size * 0.08,
             }}
           >
             ☁
@@ -141,9 +141,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text
             style={{
               position: 'absolute',
-              right: size * 0.02,
-              top: size * 0.1,
-              fontSize: size * 0.11,
+              right: size * 0.06,
+              top: size * 0.12,
+              fontSize: size * 0.08,
             }}
           >
             ○
@@ -157,19 +157,54 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
     <View
       style={{
         width: size,
-        height: size * 1.08,
+        height: size * 1.14,
         alignItems: 'center',
         justifyContent: 'flex-end',
       }}
     >
       {expression.extra}
 
+      {hasHat ? (
+        <View
+          style={{
+            position: 'absolute',
+            top: size * 0.095,
+            zIndex: 4,
+            transform: [{ rotate: '-8deg' }],
+          }}
+        >
+          <View
+            style={{
+              width: size * 0.22,
+              height: size * 0.09,
+              borderTopLeftRadius: size * 0.08,
+              borderTopRightRadius: size * 0.08,
+              backgroundColor: '#6AAFE6',
+              borderWidth: 2,
+              borderColor: '#3D78A7',
+            }}
+          />
+          <View
+            style={{
+              width: size * 0.3,
+              height: size * 0.035,
+              borderRadius: 999,
+              backgroundColor: '#4F95CB',
+              borderWidth: 2,
+              borderColor: '#3D78A7',
+              marginTop: -size * 0.01,
+              marginLeft: -size * 0.04,
+            }}
+          />
+        </View>
+      ) : null}
+
       {hasCrown ? (
         <Text
           style={{
             position: 'absolute',
-            top: size * 0.08,
-            fontSize: size * 0.11,
+            top: size * 0.11,
+            fontSize: size * 0.09,
             zIndex: 3,
           }}
         >
@@ -181,9 +216,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
         <Text
           style={{
             position: 'absolute',
-            right: size * 0.08,
-            top: size * 0.3,
-            fontSize: size * 0.08,
+            right: size * 0.11,
+            top: size * 0.34,
+            fontSize: size * 0.06,
             zIndex: 2,
           }}
         >
@@ -195,9 +230,9 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
         <Text
           style={{
             position: 'absolute',
-            left: size * 0.14,
-            top: size * 0.24,
-            fontSize: size * 0.085,
+            left: size * 0.17,
+            top: size * 0.28,
+            fontSize: size * 0.07,
             zIndex: 2,
           }}
         >
@@ -245,6 +280,18 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           boxShadow: '0 16px 28px rgba(95, 140, 83, 0.18)',
         }}
       >
+        <View
+          style={{
+            position: 'absolute',
+            top: headSize * 0.17,
+            left: headSize * 0.2,
+            width: headSize * 0.12,
+            height: headSize * 0.08,
+            borderRadius: 999,
+            backgroundColor: '#D0F0AF',
+            opacity: 0.85,
+          }}
+        />
         <View
           style={{
             position: 'absolute',
@@ -326,6 +373,35 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
           <Text style={{ fontSize: eyeSize, lineHeight: eyeSize }}>{expression.rightEye}</Text>
         </View>
 
+        {showSoftCheeks ? (
+          <>
+            <View
+              style={{
+                position: 'absolute',
+                left: headSize * 0.14,
+                bottom: headSize * 0.23,
+                width: headSize * 0.11,
+                height: headSize * 0.08,
+                borderRadius: 999,
+                backgroundColor: palette.blush,
+                opacity: state === 'happy' ? 0.85 : 0.55,
+              }}
+            />
+            <View
+              style={{
+                position: 'absolute',
+                right: headSize * 0.14,
+                bottom: headSize * 0.23,
+                width: headSize * 0.11,
+                height: headSize * 0.08,
+                borderRadius: 999,
+                backgroundColor: palette.blush,
+                opacity: state === 'happy' ? 0.85 : 0.55,
+              }}
+            />
+          </>
+        ) : null}
+
         {state === 'grumpy' ? (
           <>
             <View
@@ -367,16 +443,16 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
       </View>
 
       <View
-        style={{
-          width: bodyWidth,
-          height: bodyHeight,
-          marginTop: -size * 0.08,
-          borderRadius: bodyWidth * 0.38,
-          backgroundColor: palette.body,
-          borderWidth: 3,
-          borderColor: palette.outline,
-          alignItems: 'center',
-          justifyContent: 'flex-end',
+          style={{
+            width: bodyWidth,
+            height: bodyHeight,
+            marginTop: -size * 0.08,
+            borderRadius: bodyWidth * 0.42,
+            backgroundColor: palette.body,
+            borderWidth: 3,
+            borderColor: palette.outline,
+            alignItems: 'center',
+            justifyContent: 'flex-end',
           paddingBottom: size * 0.06,
         }}
       >
@@ -386,6 +462,17 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
             height: bodyHeight * 0.55,
             borderRadius: 999,
             backgroundColor: palette.belly,
+          }}
+        />
+        <View
+          style={{
+            position: 'absolute',
+            top: bodyHeight * 0.12,
+            width: bodyWidth * 0.18,
+            height: bodyHeight * 0.08,
+            borderRadius: 999,
+            backgroundColor: '#CDEEAE',
+            opacity: 0.9,
           }}
         />
 
@@ -414,18 +501,18 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
             backgroundColor: palette.body,
             borderWidth: 3,
             borderColor: palette.outline,
-          transform: [{ rotate: '22deg' }],
-        }}
-      />
+            transform: [{ rotate: '22deg' }],
+          }}
+        />
 
       {hasScarf ? (
         <View
           style={{
             position: 'absolute',
-            top: size * 0.63,
-            left: size * 0.37,
-            width: size * 0.24,
-            height: size * 0.065,
+            top: size * 0.615,
+            left: size * 0.385,
+            width: size * 0.21,
+            height: size * 0.055,
             borderRadius: 999,
             backgroundColor: '#E86F8F',
             borderWidth: 2,
@@ -436,19 +523,29 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
             transform: [{ rotate: '-3deg' }],
           }}
         >
-          <Text style={{ fontSize: size * 0.038 }}>🧣</Text>
           <View
             style={{
               position: 'absolute',
-              right: size * 0.035,
-              top: size * 0.028,
-              width: size * 0.05,
-              height: size * 0.09,
-              borderRadius: 999,
+              right: size * 0.04,
+              top: size * 0.02,
+              width: size * 0.038,
+              height: size * 0.085,
+              borderRadius: size * 0.02,
               backgroundColor: '#E86F8F',
               borderWidth: 2,
               borderColor: '#B95771',
-              transform: [{ rotate: '10deg' }],
+              transform: [{ rotate: '12deg' }],
+            }}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              left: size * 0.05,
+              bottom: size * 0.012,
+              width: size * 0.032,
+              height: size * 0.032,
+              borderRadius: 999,
+              backgroundColor: '#F8CAD6',
             }}
           />
         </View>
@@ -480,8 +577,8 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
       <View
         style={{
           position: 'absolute',
-          left: size * 0.02,
-          bottom: size * 0.08,
+          left: size * 0.01,
+          bottom: size * 0.09,
           width: size * 0.34,
           height: size * 0.11,
           borderRadius: 999,
@@ -495,3 +592,5 @@ export function DinoAvatar({ accessories = [], state, size = 220 }: DinoAvatarPr
     </View>
   );
 }
+
+export default DinoAvatar;

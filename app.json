@@ -1,11 +1,13 @@
 {
   "expo": {
     "name": "Dino Calm",
+    "description": "A gentle self-care app where a tiny dino helps you check in with your mood and take small calming steps.",
     "slug": "dino-calm",
-    "version": "1.0.0",
+    "version": "2.6.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "backgroundColor": "#EEF8DD",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -13,6 +15,7 @@
       "backgroundColor": "#EEF8DD"
     },
     "ios": {
+      "bundleIdentifier": "com.nuradil.dinocalm",
       "supportsTablet": true
     },
     "android": {
@@ -21,10 +24,15 @@
         "backgroundColor": "#EEF8DD"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.nuradil.dinocalm"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-notifications",
+      "@react-native-community/datetimepicker"
+    ]
   }
 }
